@@ -1,3 +1,6 @@
-# Estudos do Pyton
- Praticando aprendizado de Python. (Mini Projetos)
- Testando o Sistema
+# Mini Projetos de Python
+ 
+ ### Categorias
+
+ #### Matematica
+ - Impar ou Par
