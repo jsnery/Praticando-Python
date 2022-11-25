@@ -15,6 +15,10 @@ while True:
         user = input('Digite seu usuário: ')
         psw = input('Digite sua senha: ')
 
+    dadosExternos = open('sistemas/recursos/userpass.txt', 'a')
+    dadosExternos.write(f'\n{user} {psw}')
+    dadosExternos.close()
+
     register = {'user': user, 'psw': psw}
     usersReg.append(register)
 
