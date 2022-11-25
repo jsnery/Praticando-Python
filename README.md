@@ -1,3 +1,3 @@
 # Estudos do Pyton
- Praticando aprendizado de Python. (Testando o GIT e GITHUB)
+ Praticando aprendizado de Python. (Mini Projetos)
  Testando o Sistema
