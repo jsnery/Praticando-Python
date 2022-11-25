@@ -7,5 +7,6 @@
 - Gerador de CPF
 - Sistema de Login
 - Sistema de Cadastro
+- Sistema de Lista de Compras
 #### Games
 - Jogo da Forca
