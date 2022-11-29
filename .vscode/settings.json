@@ -30,7 +30,7 @@
         "activityBarBadge.foreground": "#ffffff",
         "activityBarBadge.background": "#5600ad",
         "sideBar.background": "#050505", // Arquivos
-        "sideBar.foreground": "#cccccc",
+        "sideBar.foreground": "#ffffff",
         "sideBarSectionHeader.background": "#3d7dff22", // Arquivos guias
         "sideBarSectionHeader.foreground": "#ffffff",
         "sideBarSectionHeader.border": "#cccccc33",
@@ -38,7 +38,7 @@
         "list.inactiveSelectionBackground": "#37373d", //
         "list.inactiveSelectionForeground": "#cccccc",
         "list.hoverBackground": "#313536",
-        "list.hoverForeground": "#cccccc",
+        "list.hoverForeground": "#ffffff",
         "list.activeSelectionBackground": "#094771",
         "list.activeSelectionForeground": "#ffffff",
         "tree.indentGuidesStroke": "#585858",
@@ -203,7 +203,7 @@
         "gitDecoration.addedResourceForeground": "#00ff2f",
         "gitDecoration.conflictingResourceForeground": "#0000ff",
         "gitDecoration.deletedResourceForeground": "#ff2600",
-        "gitDecoration.ignoredResourceForeground": "#8c8c8c",
+        "gitDecoration.ignoredResourceForeground": "#ffffff5f",
         "gitDecoration.modifiedResourceForeground": "#ff9900",
         "gitDecoration.stageDeletedResourceForeground": "#c74e39",
         "gitDecoration.stageModifiedResourceForeground": "#eea73d",
