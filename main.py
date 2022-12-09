@@ -3,36 +3,30 @@ from sistemas import Sistemas
 from matematica import Matematica
 from games import Games
 
+options_msg = f'Escolha uma opção:\n\n1) Jogo da Forca:\n2) Impar ou Par\n\
+                3) Cadastro Simples\n4) Tela de Login\n5) Validador de CPF\n\
+                6) Gerador de CPF\n7) Gerador de Lista de Compras\n\nDigite aqui: '
 
-op = input(f'Escolha uma opção:\n\n1) Jogo da Forca:\n2) Impar ou Par\n3) Cadastro Simples\n4) Tela de Login\n5) Validador de CPF\n6) Gerador de CPF\n7) Gerador de Lista de Compras\n\nDigite aqui: ')
+op = input(options_msg)
        
 while True:
-    try:
-        intOp = int(op)
-        if intOp > 7 or intOp < 1:
+    match op:
+        case '1':
+            Games(1)
+        case '2':
+            Matematica(2)
+        case '3':
+            Sistemas(3)
+        case '4':
+            Sistemas(4)
+        case '5':
+            Sistemas(5)
+        case '6':
+            Sistemas(6)
+        case '7':
+            Sistemas(7)
+        case _:
             clear()
             print('Opção Invalida!\n')
-            op = input(f'Escolha uma opção:\n\n1) Jogo da Forca:\n2) Impar ou Par\n3) Cadastro Simples\n4) Tela de Login\n5) Validador de CPF\n6) Gerador de CPF\n7) Gerador de Lista de Compras\n\nDigite aqui: ')
-            continue
-        break
-    except ValueError:
-        clear()
-        print('Você não digitou um numero inteiro!\n')
-        op = input(f'Escolha uma opção:\n\n1) Jogo da Forca:\n2) Impar ou Par\n3) Cadastro Simples\n4) Tela de Login\n5) Validador de CPF\n6) Gerador de CPF\n7) Gerador de Lista de Compras\n\nDigite aqui: ')
-            
-if op == '1':
-    Games(1)
-elif op == '2':
-    Matematica(2)
-elif op == '3':
-    Sistemas(3)
-elif op == '4':
-    Sistemas(4)
-elif op == '5':
-    Sistemas(5)
-elif op == '6':
-    Sistemas(6)
-elif op == '7':
-    Sistemas(7)
-    
-print('Finalizado')
+            op = input(options_msg)
+
