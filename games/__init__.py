@@ -1,3 +1,1 @@
-def Games(x):
-    if x == 1:
-        import games.hangmangame
+from games.hangmangame import hangman_game

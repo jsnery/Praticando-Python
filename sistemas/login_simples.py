@@ -1,36 +1,37 @@
 from resources import clear
+from pathlib import Path
 
-nome = None
-senha = None
-dictDeRegistro = None
-usersReg = []
+def login_system():
+    FILEDIR = Path(__file__).parent / f'recursos/userpass.txt'
+    username = None
+    password = None
+    data_users_create = None
+    list_data_users = []
 
-dadosExternos = open('sistemas/recursos/userpass.txt', 'r')
-dadosExternosUsuario = dadosExternos.readlines()
+    with FILEDIR.open('r') as file:
+        user_data = file.readlines()
 
-for dados in dadosExternosUsuario:
-    nome, senha = dados.split()
-    dictDeRegistro = {'user': nome, 'psw': senha}
-    usersReg.append(dictDeRegistro)
-    
-dadosExternos.close()
+        for dados in user_data:
+            username, password = dados.split()
+            data_users_create = {'user': username, 'psw': password}
+            list_data_users.append(data_users_create)
 
-clear()
-user = input('Digite seu usuário: ')
-psw = input('Digite sua senha: ')
-
-validation = user.isspace() or psw.isspace() or not bool(user) or not bool(psw)
-
-while validation:
     clear()
-    print('Usuáŕio e/ou Senha invalido(s)!\n')
     user = input('Digite seu usuário: ')
-    psw = input('Digite sua senha: ')
+    password = input('Digite sua senha: ')
 
-for dados in usersReg:
-    if user == dados['user'] and psw == dados['psw']:
-        print("\nEntrou com sucesso!")
-        break
+    validation = user.isspace() or password.isspace() or not bool(user) or not bool(password)
 
-else:
-    print('\nUsuario não encontrado!')
+    while validation:
+        clear()
+        print('Usuário e/ou Senha invalido(s)!\n')
+        user = input('Digite seu usuário: ')
+        password = input('Digite sua senha: ')
+
+    for dados in list_data_users:
+        if user == dados['user'] and password == dados['psw']:
+            print("\nEntrou com sucesso!")
+            break
+
+    else:
+        print('\nUsuario não encontrado!')

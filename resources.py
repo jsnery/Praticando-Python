@@ -1,7 +1,10 @@
 from sys import platform
 from os import system
 
+
 def clear():
-    if platform == 'linux' or platform == 'darwin':
-        return system('clear')
-    return system('cls')
+    match platform:
+        case 'win32' | 'cygwin':
+            return system('cls')
+        case _:
+            return system('clear')

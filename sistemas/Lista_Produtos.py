@@ -1,86 +1,113 @@
 from copy import deepcopy
+from pathlib import Path
 from resources import clear
-import os
 
-def ordenar(x):
-    if os.path.exists(nomeLista_Txt):
-        os.remove(nomeLista_Txt)
-    listaComprasNomes = sorted(deepcopy(listaCompras), key=lambda i: i[x])
-    listaComprasTXT = open(nomeLista_Txt, 'a')
-    listaComprasTXT.write(f'{tituloLista_Txt}\n\n')
-    for i in listaComprasNomes:
-        print(f"Produto: {i['produto']: ^15} | Unidades: {i['quantidade']:0>3} | Preço Unitário: {i['preco']: ^8.2f} | Preço Total: {i['precoFinal']:,.2f}")
-        listaComprasTXT.write(f"Produto: {i['produto']: ^15} | Unidades: {i['quantidade']:0>3} | Preço Unitário: {i['preco']: ^8.2f} | Preço Total: {i['precoFinal']:,.2f}\n")
-    listaComprasTXT.close()
+def product_list():
+    def ordenar(x):
+        if FILEDIR.exists():
+            FILEDIR.unlink()
+        list_sort_key = sorted(deepcopy(buy_list), key=lambda i: i[x])
+        with FILEDIR.open('a+') as file:
+            file.write(f'{list_title}\n\n')
+            for i in list_sort_key:
+                list_data = f"Produto: {i['produto']: ^15} | Unidades: {i['quantidade']:0>3} | Preço Unitário: {i['preco']: ^8.2f} | Preço Total: {i['precoFinal']:,.2f}\n"
+                file.write(list_data)
 
-# Criando lista de compras ordenadas
-listaCompras = []
-escolhaOpcao = None
+    # Criando lista de compras ordenadas
+    buy_list = []
+    options = None
+    x = False
 
-while True:
-    clear()
-    item = input('Digite o Nome do produto: ')
-
-    while True: # Insira a quantidade
-        try:
-            qnt = int(input('Digite a quantidade de compra: '))
-            break
-        except ValueError as error:
-            clear()
-            print(f'{error.__class__.__name__}: A Quantidade deve ser um numero Interio\n')
-
-    while True: # Insira o Preço
-        try:
-            preco = float(input('Digite o Preço do produto: R$').replace(',', '.'))
-            break
-        except ValueError as error:
-            clear()
-            print(f'{error.__class__.__name__}: O Preço deve conter apenas numeros\n')
-
-    dictProdutos = {'produto': item, 'quantidade': qnt, 'preco': preco, 'precoFinal': preco*qnt}
-
-    listaCompras.append(dictProdutos)
-
-    escolhaOpcao = input('\nDeseja continuar? [s]im ').lower()
-
-    if escolhaOpcao == 's':
-        continue
-    else:
-        break
-
-clear()
-
-nomeLista_Txt = input('Nomeie o arquivo: ').replace(' ', '-')
-tituloLista_Txt = input('Digite o Titulo da lista: ')
-
-clear()
-
-nomeLista_Txt += '.txt'
-lista_Txt = open(nomeLista_Txt, 'a')
-lista_Txt.write(f'{tituloLista_Txt}\n\n')
-for i in listaCompras:
-    print(f"Produto: {i['produto']: ^15} | Unidades: {i['quantidade']:0>3} | Preço Unitário: {i['preco']: ^8.2f} | Preço Total: {i['precoFinal']:,.2f}")
-    lista_Txt.write(f"Produto: {i['produto']: ^15} | Unidades: {i['quantidade']:0>3} | Preço Unitário: {i['preco']: ^8.2f} | Preço Total: {i['precoFinal']:,.2f}\n")
-
-lista_Txt.close()
-
-print('\nLista de Compras Gerada com sucesso!\n')
-
-escolhaOpcao = input('Deseja oredena-la? [s]im ').lower()
-
-if escolhaOpcao == 's':
-    clear()
-    escolhaOpcao = input('Escolha uma opção:\n\n1) Nome\n2) Quantidade\n3) Preço\n4) Preço Final\n\nDigite aqui: ')
-
-    while not escolhaOpcao.isnumeric() or int(escolhaOpcao) > 4 or int(escolhaOpcao) < 0:
+    while True:
         clear()
-        escolhaOpcao = input('Opçõa invalida!\n\nEscolha uma opção:\n\n1) Nome\n2) Quantidade\n3) Preço\n4) Preço Final\n\nDigite aqui: ')
-    
-    if int(escolhaOpcao) == 1:
-        ordenar('produto')
-    elif int(escolhaOpcao) == 2:
-        ordenar('quantidade')
-    elif int(escolhaOpcao) == 3:
-        ordenar('preco')
-    elif int(escolhaOpcao) == 4:
-        ordenar('precoFinal')
+        item_name = input('Digite o Nome do produto: ')
+
+        while True: # Insira a quantidade
+            try:
+                item_quantity = int(input('Digite a quantidade de compra: '))
+                break
+            except ValueError as error:
+                clear()
+                print(f'{error.__class__.__name__}: A Quantidade deve ser um numero Interio\n')
+
+        while True: # Insira o Preço
+            try:
+                item_price = float(input('Digite o Preço do produto: R$').replace(',', '.'))
+                break
+            except ValueError as error:
+                clear()
+                print(f'{error.__class__.__name__}: O Preço deve conter apenas numeros\n')
+
+        products_dict = {'produto': item_name, 'quantidade': item_quantity, 'preco': item_price, 'precoFinal': item_price*item_quantity}
+
+        buy_list.append(products_dict)
+        
+        while True:
+            options = input('\nAdd more items, [y]es or [n]ot?\n')
+            
+            match options.lower():
+                case 'y' | 'yes' | 'yet' | 'yup':
+                    break
+                case 'n' | 'no' | 'not':
+                    x = True
+                    break
+                case _:
+                    clear()
+                    print('No understand what you typed! ')
+                    
+        if x is True:
+            break
+
+    clear()
+
+    list_name = input('Nomeie o arquivo: ').replace(' ', '-')
+    list_title = input('Digite o Titulo da lista: ')
+
+    FILEDIR = Path(__file__).parent / f'recursos/{list_name}.txt'
+
+    clear()
+
+    with FILEDIR.open('a+') as file:
+        file.write(f'{list_title}\n\n')
+        for i in buy_list:
+            list_data = f"Produto: {i['produto']: ^15} | Unidades: {i['quantidade']:0>3} | Preço Unitário: {i['preco']: ^8.2f} | Preço Total: {i['precoFinal']:,.2f}\n"
+            print(list_data)
+            file.write(list_data)
+
+    print('\nSuccess genered buy list!\n')
+
+    while True:
+        options = input('Wish sort? [y]es [n]ot ')
+        
+        match options.lower():
+            case 'y' | 'yes' | 'yet' | 'yup':
+                clear()
+                while True:
+                    options = input('Try option:\n\n1) Nome\n2) Quantidade\n3) Preço\n4) Preço Final\n\nDigite aqui: ')
+
+                    match options.lower():
+                        case '1':
+                            ordenar('produto')
+                            break
+                        case '2':
+                            ordenar('quantidade')
+                            break
+                        case '3':
+                            ordenar('preco')
+                            break
+                        case '4':
+                            ordenar('precoFinal')
+                            break
+                        case _:
+                            clear()
+                            print('No understand what you typed! ')
+                            
+            case 'n' | 'no' | 'not':
+                clear()
+                break
+            case _:
+                clear()
+                print('No understand what you typed!\n')
+                    
+                    
+            
