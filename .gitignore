@@ -1,2 +1,5 @@
 .vscode/
 __pycache__/
+sistemas/__pycache__/
+matematica/__pycache__/
+games/__pycache__/
