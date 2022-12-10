@@ -3,7 +3,7 @@ from pathlib import Path
 from resources import clear
 
 def product_list():
-    def ordenar(x):
+    def sort_items(x):
         if FILEDIR.exists():
             FILEDIR.unlink()
         list_sort_key = sorted(deepcopy(buy_list), key=lambda i: i[x])
@@ -39,7 +39,6 @@ def product_list():
                 print(f'{error.__class__.__name__}: O Preço deve conter apenas numeros\n')
 
         products_dict = {'produto': item_name, 'quantidade': item_quantity, 'preco': item_price, 'precoFinal': item_price*item_quantity}
-
         buy_list.append(products_dict)
         
         while True:
@@ -87,16 +86,16 @@ def product_list():
 
                     match options.lower():
                         case '1':
-                            ordenar('produto')
+                            sort_items('produto')
                             break
                         case '2':
-                            ordenar('quantidade')
+                            sort_items('quantidade')
                             break
                         case '3':
-                            ordenar('preco')
+                            sort_items('preco')
                             break
                         case '4':
-                            ordenar('precoFinal')
+                            sort_items('precoFinal')
                             break
                         case _:
                             clear()
