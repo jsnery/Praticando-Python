@@ -8,7 +8,7 @@ options_msg = f'Escolha uma opção:\n\n1) Jogo da Forca:\n2) Impar ou Par\n\
 6) Gerador de CPF\n7) Gerador de Lista de Compras\n\nDigite aqui: '
        
 while True:
-    op = input(options_msg)
+    op = input(options_msg).lower()
     
     match op:
         case '1':
@@ -25,6 +25,8 @@ while True:
             cpf_generator()
         case '7':
             product_list()
+        case 'sair' | 's' | 'e' | 'exit':
+            break
         case _:
             clear()
             print('Opção Invalida!\n')

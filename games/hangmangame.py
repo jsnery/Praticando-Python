@@ -10,7 +10,7 @@ def hangman_game():
     |     
     |              O
     |             /|\ 
-    _|________     / \ 
+   _|________     / \ 
     ''')
         if vidas == 5:
             print(f'''\
@@ -19,7 +19,7 @@ def hangman_game():
     |     O
     |        
     |             /|\ 
-    _|________     / \ 
+   _|________     / \ 
     ''')
         elif vidas == 4:
             print(f'''\
@@ -28,7 +28,7 @@ def hangman_game():
     |     O
     |     |
     |             / \ 
-    _|________     / \ 
+   _|________     / \ 
     ''')
         elif vidas == 3:
             print(f'''\
@@ -37,7 +37,7 @@ def hangman_game():
     |     O
     |    /|
     |               \ 
-    _|________     / \ 
+   _|________     / \ 
     ''')
         elif vidas == 2:
             print(f'''\
@@ -46,7 +46,7 @@ def hangman_game():
     |     O
     |    /|\ 
     |
-    _|________     / \ 
+   _|________     / \ 
     ''')
         elif vidas == 1:
             print(f'''\
@@ -55,7 +55,7 @@ def hangman_game():
     |     O
     |    /|\ 
     |      \ 
-    _|________     / 
+   _|________     / 
     ''')
         elif vidas == 0:
             print(f'''\
@@ -64,7 +64,7 @@ def hangman_game():
     |     O
     |    /|\     
     |    / \ 
-    _|________
+   _|________
     ''')
 
     clear()
@@ -136,7 +136,7 @@ def hangman_game():
     |     
     |             \O/
     |              |
-    _|________     / \ 
+   _|________     / \ 
     ''')
             print(f'A palavra é : {resultadoTexto}')
             break

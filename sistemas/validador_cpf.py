@@ -17,8 +17,8 @@ def cpf_validator():
             break
 
     if (novoCPF[0] * 11) == cpf:
-        print("\nCPF INVALIDO!")
+        print("\nCPF INVALIDO!\n")
     elif novoCPF != cpf:
-        print("\nCPF INVALIDO!")
+        print("\nCPF INVALIDO!\n")
     else:
-        print('\nCPF VÁLIDO!')
+        print('\nCPF VÁLIDO!\n')

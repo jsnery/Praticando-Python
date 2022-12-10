@@ -2,6 +2,7 @@ from resources import clear
 from pathlib import Path
 
 def login_system():
+    clear()
     FILEDIR = Path(__file__).parent / f'recursos/userpass.txt'
     username = None
     password = None
@@ -18,29 +19,23 @@ def login_system():
             list_data_users.append(data_users_create)
     
     while True:
-        
-        match validation:
-            
-            clear()
-            user = input('Digite seu usuário: ')
-            password = input('Digite sua senha: ')
-            validation = user.isspace() or password.isspace() or not bool(user) or not bool(password)
-            
-            case True:
-                ...
-        
-
-
-    while validation:
-        clear()
-        print('Usuário e/ou Senha invalido(s)!\n')
         user = input('Digite seu usuário: ')
         password = input('Digite sua senha: ')
+        validation = user.isspace() or password.isspace() or not bool(user) or not bool(password)
+        match validation:
+            case True:
+                clear()
+                print("Você precisa digitar um usuário e senha!\n")
+                continue
+            case _:
+                break
 
     for dados in list_data_users:
         if user == dados['user'] and password == dados['psw']:
-            print("\nEntrou com sucesso!")
+            clear()
+            print("Entrou com sucesso!\n")
             break
 
     else:
-        print('\nUsuario não encontrado!')
+        clear()
+        print('Usuario não encontrado!\n')
