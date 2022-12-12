@@ -8,5 +8,6 @@
 - Sistema de Login
 - Sistema de Cadastro
 - Sistema de Lista de Compras
+- Cadastro e Login com Decorador
 #### Games
 - Jogo da Forca
